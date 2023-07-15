@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const BASE_URL = "https://api.themoviedb.org/3/movie/popular";
+const BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = process.env.API_KEY;
 
 const nextConfig = {
@@ -18,7 +18,11 @@ const nextConfig = {
     return [
       {
         source: "/api/movies",
-        destination: `${BASE_URL}?api_key=${API_KEY}`,
+        destination: `${BASE_URL}/movie/popular?api_key=${API_KEY}`,
+      },
+      {
+        source: "/api/movies/:id",
+        destination: `${BASE_URL}/movie/:id?api_key=${API_KEY}`,
       },
     ];
   },
